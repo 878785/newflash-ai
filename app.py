@@ -1,11 +1,14 @@
-from flask import Flask, render_template, jsonify
+from flask import Flask, render_template, jsonify, session
 from flask_cors import CORS
 import requests
+import os
 
 app = Flask(__name__)
 CORS(app)
 
-API_KEY = "2c46153819d74ff899ea44a6aa993b7c"  # ✅
+app.secret_key = "your_secret_key_here"  # Session ke liye zaroori
+
+API_KEY = "2c46153819d74ff899ea44a6aa993b7c"
 
 @app.route('/')
 def index():
@@ -18,14 +21,11 @@ def trending():
 @app.route('/bookmark')
 def bookmark_page():
     return render_template('bookmark.html')
-    
 
 @app.route('/bookmarks')
 def show_bookmarks():
     bookmarks = session.get('bookmarks', [])
     return render_template('bookmarks.html', bookmarks=bookmarks)
-
-
 
 @app.route("/about")
 def about():
@@ -33,7 +33,7 @@ def about():
 
 @app.route("/saved")
 def saved():
-    return render_template("saved.html")  # ✅ Function name updated here
+    return render_template("saved.html")
 
 @app.route('/news')
 def news_page():
@@ -46,16 +46,12 @@ def get_news():
     try:
         response = requests.get(url)
         data = response.json()
-        print(data)
         articles = data.get("articles", [])
         return jsonify({"articles": articles})
     except Exception as e:
         return jsonify({"error": str(e)})
 
-if __name__ == '__main__':
-    app.run(debug=True)
-import os
-
+# ✅ Yehi ek hi bar hona chahiye
 if __name__ == '__main__':
     port = int(os.environ.get("PORT", 5000))
     app.run(host='0.0.0.0', port=port)
