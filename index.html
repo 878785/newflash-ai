@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NewsFlash AI - Your Smart News Hub</title>
+
+    <!-- ✅ Correct way to link CSS/JS in Flask -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='news.css') }}">
+    
+</head>
+
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="logo">🧠 NewsFlash AI</div>
+        <nav class="nav-links">
+            <a href="news">Home</a>
+            <a href="trending">Trending</a>
+            <a href="saved">Saved</a>
+            <a href="about">About</a>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <center>
+        <h1>Get Smarter with AI-Powered News Summaries</h1>
+        <p>Summarized. Categorized. Personalized.</p></center>
+    </section>
+
+
+
+    <!-- Search and Filter -->
+    <section class="search-filter">
+        <center>
+        <input type="text" id="searchInput" placeholder="Search news...">
+        <select id="categoryFilter">
+            <option value="all">All Categories</option>
+            <option value="technology">Technology</option>
+            <option value="health">Health</option>
+            <option value="sports">Sports</option>
+            <option value="entertainment">Entertainment</option>
+            <option value="business">Business</option>
+        </select>
+    </center>
+    </section>
+
+    <!-- News Feed -->
+    <section id="newsFeed" class="news-feed">
+        <!-- News Cards will be inserted here dynamically -->
+    </section>
+
+    <!-- Modal Popup for News Detail -->
+    <div id="newsModal" class="modal hidden">
+        <div class="modal-content">
+            <span id="closeModal" class="close-button">&times;</span>
+            <h2 id="modalTitle"></h2>
+            <p id="modalSummary"></p>
+            <a id="modalLink" href="#" target="_blank">Read Full Article</a>
+        </div>
+    </div>
+
+    <section style="text-align: center; padding: 60px 20px;">
+  <h2 style="color: white; font-size: 32px; margin-bottom: 20px;">
+    📰 Previous News
+  </h2>
+
+  <p style="color: #ccc; font-size: 18px; margin-bottom: 30px;">
+    These are AI-summarized old articles for your reference.
+  </p>
+
+  <a href="/news">
+    <button style="
+      background: linear-gradient(90deg, #ff416c, #ff4b2b);
+      border: none;
+      color: white;
+      padding: 15px 30px;
+      font-size: 18px;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: 0.3s ease;
+    " onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+      🔥 Read Latest News
+    </button>
+  </a>
+</section>
+
+ <!-- News Container for Dynamic Headlines -->
+<div id="news-container" class="news-section">
+  <p>Loading top headlines...</p>
+</div>
+
+
+    <!-- Footer -->
+    <footer class="footer">
+        <center>
+        <p>&copy; 2025 NewsFlash AI | Built with ❤️ by Sumit Mishra</p>
+    </center>
+    </footer>
+    <script src="/static/news.js" defer></script>
+
+</body>
+</html>

@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About | NewsFlash AI</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <style>
+    @keyframes bounceIn {
+      0% { opacity: 0; transform: scale(0.8); }
+      60% { opacity: 1; transform: scale(1.1); }
+      100% { transform: scale(1); }
+    }
+    @keyframes slideUp {
+      0% { opacity: 0; transform: translateY(30px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes slideLeft {
+      0% { opacity: 0; transform: translateX(-30px); }
+      100% { opacity: 1; transform: translateX(0); }
+    }
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+      100% { transform: scale(1); }
+    }
+    @keyframes gradientShift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+    @keyframes spinSlow {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    @keyframes fadeIn {
+      0% { opacity: 0; }
+      100% { opacity: 1; }
+    }
+    .animate-bounceIn {
+      animation: bounceIn 0.8s ease-out forwards;
+    }
+    .animate-slideUp {
+      animation: slideUp 0.8s ease-out forwards;
+    }
+    .animate-slideLeft {
+      animation: slideLeft 0.8s ease-out forwards;
+    }
+    .animate-pulse {
+      animation: pulse 1.5s ease-in-out infinite;
+    }
+    .animate-spinSlow {
+      animation: spinSlow 10s linear infinite;
+    }
+    .animate-fadeIn {
+      animation: fadeIn 1s ease-out forwards;
+    }
+    .gradient-bg {
+      background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1, #96ce79);
+      background-size: 400%;
+      animation: gradientShift 12s ease infinite;
+    }
+    .gradient-text {
+      background: linear-gradient(90deg, #ff4b4b, #4ecdc4);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .hover-grow:hover {
+      transform: scale(1.05);
+      transition: transform 0.3s ease;
+    }
+    .hover-rotate:hover {
+      transform: rotate(5deg);
+      transition: transform 0.3s ease;
+    }
+    .feature-card {
+      transition: all 0.3s ease;
+    }
+    .feature-card:hover {
+      box-shadow: 0 15px 25px rgba(0, 0, 0, 0.2);
+      transform: translateY(-8px);
+    }
+    .icon-hover:hover {
+      transform: scale(1.2) rotate(10deg);
+      transition: transform 0.3s ease;
+    }
+  </style>
+</head>
+<body class="gradient-bg min-h-screen flex items-center justify-center p-4 sm:p-8">
+  <div class="max-w-5xl w-full bg-white bg-opacity-95 rounded-3xl shadow-2xl p-8 sm:p-12 animate-bounceIn">
+    <h1 class="text-4xl sm:text-6xl font-extrabold text-center gradient-text mb-8 animate-slideUp">
+      NewsFlash AI: Your News, Smarter & Faster
+    </h1>
+    <p class="text-lg sm:text-2xl text-gray-800 leading-relaxed mb-10 text-center animate-slideLeft">
+      Welcome to <strong class="gradient-text">NewsFlash AI</strong>, where cutting-edge AI meets vibrant, real-time news! Our platform transforms how you stay informed, delivering snappy, accurate, and personalized news summaries from global sources, powered by NewsAPI, wrapped in a colorful, dynamic interface.
+    </p>
+
+    <h2 class="text-3xl sm:text-4xl font-bold text-pink-600 mt-12 mb-6 animate-slideUp">Why NewsFlash AI?</h2>
+    <p class="text-gray-700 text-lg leading-relaxed mb-8 animate-fadeIn">
+      In a world buzzing with information, NewsFlash AI is your beacon of clarity. Our AI-driven engine fetches the latest headlines, condenses them into bite-sized summaries, and lets you dive into news tailored to your vibe. With animations that pop and colors that dazzle, staying informed has never been this fun!
+    </p>
+
+    <h2 class="text-3xl sm:text-4xl font-bold text-purple-600 mt-12 mb-6 animate-slideUp">Our Superpowers</h2>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+      <div class="feature-card bg-red-100 p-6 rounded-xl hover-grow animate-slideLeft">
+        <i class="fas fa-bolt text-3xl text-red-500 mb-4 icon-hover animate-spinSlow"></i>
+        <h3 class="text-xl font-semibold text-red-600 animate-fadeIn">Real-Time Updates</h3>
+        <p class="text-gray-600 animate-slideUp">Catch the latest news as it breaks, sourced from trusted global outlets via NewsAPI.</p>
+      </div>
+      <div class="feature-card bg-blue-100 p-6 rounded-xl hover-grow animate-slideLeft" style="animation-delay: 0.1s;">
+        <i class="fas fa-robot text-3xl text-blue-500 mb-4 icon-hover animate-pulse"></i>
+        <h3 class="text-xl font-semibold text-blue-600 animate-fadeIn">AI Summaries</h3>
+        <p class="text-gray-600 animate-slideUp">Our AI distills articles into quick summaries, saving you time while keeping you informed.</p>
+      </div>
+      <div class="feature-card bg-green-100 p-6 rounded-xl hover-grow animate-slideLeft" style="animation-delay: 0.2s;">
+        <i class="fas fa-filter text-3xl text-green-500 mb-4 icon-hover animate-spinSlow"></i>
+        <h3 class="text-xl font-semibold text-green-600 animate-fadeIn">Category Filters</h3>
+        <p class="text-gray-600 animate-slideUp">Dive into news by topics like tech, sports, or politics, customized to your interests.</p>
+      </div>
+      <div class="feature-card bg-yellow-100 p-6 rounded-xl hover-grow animate-slideLeft" style="animation-delay: 0.3s;">
+        <i class="fas fa-bookmark text-3xl text-yellow-500 mb-4 icon-hover animate-pulse"></i>
+        <h3 class="text-xl font-semibold text-yellow-600 animate-fadeIn">Save Favorites</h3>
+        <p class="text-gray-600 animate-slideUp">Bookmark articles to revisit or share, keeping your news at your fingertips.</p>
+      </div>
+    </div>
+
+    <h2 class="text-3xl sm:text-4xl font-bold text-indigo-600 mt-12 mb-6 animate-slideUp">Our Vision</h2>
+    <p class="text-gray-700 text-lg leading-relaxed mb-8 animate-slideLeft">
+      At NewsFlash AI, we’re on a mission to make news accessible, engaging, and vibrant. We envision a world where staying informed is effortless and exciting, powered by AI that delivers personalized content with a splash of color and flair.
+    </p>
+
+    <h2 class="text-3xl sm:text-4xl font-bold text-teal-600 mt-12 mb-6 animate-slideUp">Meet the Mastermind</h2>
+    <div class="flex flex-col sm:flex-row items-center bg-teal-50 p-6 rounded-xl mb-8 animate-bounceIn">
+      <div class="w-32 h-32 rounded-full bg-gradient-to-r from-teal-400 to-blue-500 flex items-center justify-center text-white text-4xl font-bold mb-4 sm:mb-0 sm:mr-6 hover-rotate animate-pulse">
+        SM
+      </div>
+      <div>
+        <p class="text-gray-700 text-lg leading-relaxed animate-slideLeft">
+          Built with ❤️ by <strong class="gradient-text">Sumit Mishra</strong>, a tech wizard passionate about AI and news. Sumit’s vision for NewsFlash AI combines sleek design, powerful tech, and a love for making information pop with style and energy.
+        </p>
+      </div>
+    </div>
+
+    <h2 class="text-3xl sm:text-4xl font-bold text-orange-600 mt-12 mb-6 animate-slideUp">Tech Stack Powerhouse</h2>
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-12">
+      <div class="feature-card bg-orange-100 p-6 rounded-xl hover-grow animate-slideLeft">
+        <i class="fas fa-code text-3xl text-orange-500 mb-4 icon-hover animate-spinSlow"></i>
+        <h3 class="text-xl font-semibold text-orange-600 animate-fadeIn">Frontend</h3>
+        <p class="text-gray-600 animate-slideUp">HTML, CSS, and JavaScript for a dynamic, colorful, and responsive UI.</p>
+      </div>
+      <div class="feature-card bg-purple-100 p-6 rounded-xl hover-grow animate-slideLeft" style="animation-delay: 0.1s;">
+        <i class="fas fa-server text-3xl text-purple-500 mb-4 icon-hover animate-pulse"></i>
+        <h3 class="text-xl font-semibold text-purple-600 animate-fadeIn">Backend</h3>
+        <p class="text-gray-600 animate-slideUp">Flask (Python) for fast, scalable server-side magic.</p>
+      </div>
+      <div class="feature-card bg-pink-100 p-6 rounded-xl hover-grow animate-slideLeft" style="animation-delay: 0.2s;">
+        <i class="fas fa-plug text-3xl text-pink-500 mb-4 icon-hover animate-spinSlow"></i>
+        <h3 class="text-xl font-semibold text-pink-600 animate-fadeIn">API</h3>
+        <p class="text-gray-600 animate-slideUp">NewsAPI.org for reliable, real-time news data.</p>
+      </div>
+    </div>
+
+    <h2 class="text-3xl sm:text-4xl font-bold text-blue-600 mt-12 mb-6 animate-slideUp">Join the News Revolution</h2>
+    <p class="text-gray-700 text-lg leading-relaxed mb-8 animate-slideLeft">
+      NewsFlash AI isn’t just an app—it’s a vibrant journey into the world of news. With AI at its core and a splash of colorful animations, we’re here to make staying informed a delightful adventure. Join us and experience news like never before!
+    </p>
+
+    <div class="text-center mt-12 animate-bounceIn">
+      <a href="/" class="inline-block bg-gradient-to-r from-blue-500 to-purple-500 text-white font-semibold py-4 px-8 rounded-full hover:from-blue-600 hover:to-purple-600 transition duration-300 hover-grow animate-pulse">
+        Dive into NewsFlash AI
+      </a>
+    </div>
+  </div>
+
+  <script>
+    // Scroll-based animation trigger
+    const elements = document.querySelectorAll('.animate-slideUp, .animate-slideLeft, .animate-fadeIn, .animate-bounceIn');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('opacity-100', 'translate-y-0', 'translate-x-0');
+          entry.target.classList.remove('opacity-0', 'translate-y-10', 'translate-x-10');
+        }
+      });
+    }, { threshold: 0.2 });
+
+    elements.forEach(el => {
+      el.classList.add('opacity-0');
+      if (el.classList.contains('animate-slideUp')) {
+        el.classList.add('translate-y-10');
+      } else if (el.classList.contains('animate-slideLeft')) {
+        el.classList.add('translate-x-10');
+      }
+      el.classList.add('transition', 'duration-700');
+      observer.observe(el);
+    });
+
+    // Hover animation for buttons
+    const buttons = document.querySelectorAll('.hover-grow');
+    buttons.forEach(btn => {
+      btn.addEventListener('mouseenter', () => {
+        btn.classList.add('animate-pulse');
+      });
+      btn.addEventListener('mouseleave', () => {
+        btn.classList.remove('animate-pulse');
+      });
+    });
+  </script>
+</body>
+</html>
