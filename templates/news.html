@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Top Headlines - NewsFlash AI</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='headline.css') }}">
+
+</head>
+<body>
+  <header>
+    <h1>📰 Latest News - NewsFlash AI</h1>
+    <nav>
+      <a href="/">🏠 Home</a>
+      <a href="/news">🔔 Top Headlines</a>
+      <a href="/bookmark" onclick="showBookmarks()">🔖 Bookmarks</a>
+    </nav>
+  </header>
+
+  <div id="news-container">
+    <p>Loading top headlines...</p>
+  </div>
+
+  <div id="bookmarks" style="display: none;">
+    <h2>🔖 Saved Bookmarks</h2>
+    <ul id="bookmark-list"></ul>
+  </div>
+
+  <script src="{{ url_for('static', filename='news.js') }}"></script>
+</body>
+</html>

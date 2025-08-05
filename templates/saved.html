@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Saved News | NewsFlash AI</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <style>
+    @keyframes bounceIn {
+      0% { opacity: 0; transform: scale(0.7); }
+      60% { opacity: 1; transform: scale(1.1); }
+      100% { transform: scale(1); }
+    }
+    @keyframes slideUp {
+      0% { opacity: 0; transform: translateY(40px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes slideRight {
+      0% { opacity: 0; transform: translateX(40px); }
+      100% { opacity: 1; transform: translateX(0); }
+    }
+    @keyframes pulseGlow {
+      0% { transform: scale(1); box-shadow: 0 0 5px rgba(0, 0, 0, 0.2); }
+      50% { transform: scale(1.03); box-shadow: 0 0 15px rgba(0, 0, 0, 0.3); }
+      100% { transform: scale(1); box-shadow: 0 0 5px rgba(0, 0, 0, 0.2); }
+    }
+    @keyframes gradientShift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+    @keyframes spinSlow {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    @keyframes fadeIn {
+      0% { opacity: 0; }
+      100% { opacity: 1; }
+    }
+    .animate-bounceIn {
+      animation: bounceIn 0.8s ease-out forwards;
+    }
+    .animate-slideUp {
+      animation: slideUp 0.8s ease-out forwards;
+    }
+    .animate-slideRight {
+      animation: slideRight 0.8s ease-out forwards;
+    }
+    .animate-pulseGlow {
+      animation: pulseGlow 1.5s ease-in-out infinite;
+    }
+    .animate-spinSlow {
+      animation: spinSlow 8s linear infinite;
+    }
+    .animate-fadeIn {
+      animation: fadeIn 1s ease-out forwards;
+    }
+    .gradient-bg {
+      background: linear-gradient(45deg, #ff4b4b, #4ecdc4, #45b7d1, #feca57);
+      background-size: 400%;
+      animation: gradientShift 10s ease infinite;
+    }
+    .gradient-text {
+      background: linear-gradient(90deg, #ff4b4b, #4ecdc4);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .news-card {
+      transition: all 0.4s ease;
+    }
+    .news-card:hover {
+      transform: translateY(-10px) scale(1.03);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+    }
+    .icon-hover:hover {
+      transform: scale(1.3) rotate(15deg);
+      transition: transform 0.3s ease;
+    }
+    .button-hover:hover {
+      transform: scale(1.1);
+      transition: transform 0.3s ease;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    }
+    .link-hover:hover {
+      background: linear-gradient(90deg, #00cec9, #4ecdc4);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      transform: translateY(-2px);
+      transition: all 0.3s ease;
+    }
+  </style>
+</head>
+<body class="gradient-bg min-h-screen flex flex-col items-center p-4 sm:p-8">
+  <h1 class="text-4xl sm:text-6xl font-extrabold text-center gradient-text mb-10 animate-bounceIn">
+    Your Saved News
+  </h1>
+  <p class="text-lg sm:text-2xl text-gray-800 text-center max-w-3xl mb-12 animate-slideUp">
+    Revisit your favorite stories with <strong class="gradient-text">NewsFlash AI</strong>! Your saved articles are beautifully organized, ready to spark inspiration or dive deeper into the news you love.
+  </p>
+
+  <div id="news-container" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl w-full"></div>
+
+  <div id="no-news" class="hidden text-center text-gray-700 text-lg sm:text-xl mt-8 animate-fadeIn">
+    <i class="fas fa-newspaper text-4xl text-gray-500 mb-4 animate-spinSlow"></i>
+    <p>No saved news found. Start saving your favorite stories now!</p>
+  </div>
+
+  <div class="text-center mt-12 animate-slideUp">
+    <a href="/" class="inline-block bg-gradient-to-r from-blue-500 to-purple-500 text-white font-semibold py-4 px-8 rounded-full button-hover animate-pulseGlow">
+      Back to NewsFlash AI
+    </a>
+  </div>
+
+  <script>
+    const savedNews = JSON.parse(localStorage.getItem("savedNews")) || [];
+    const container = document.getElementById("news-container");
+    const noNewsDiv = document.getElementById("no-news");
+
+    if (savedNews.length === 0) {
+      noNewsDiv.classList.remove("hidden");
+    } else {
+      savedNews.forEach((news, index) => {
+        const card = document.createElement("div");
+        card.className = "news-card bg-white bg-opacity-90 rounded-xl p-6 animate-slideRight";
+        card.style.animationDelay = `${index * 0.1}s`;
+        card.innerHTML = `
+          <i class="fas fa-bookmark text-2xl text-yellow-500 mb-4 icon-hover animate-pulseGlow"></i>
+          <h2 class="text-xl sm:text-2xl font-semibold text-blue-600 mb-3 animate-fadeIn">${news.title}</h2>
+          <p class="text-gray-600 text-sm sm:text-base leading-relaxed mb-4 animate-slideUp">${news.description}</p>
+          <a href="${news.url}" target="_blank" class="inline-block text-teal-500 font-medium text-sm sm:text-base link-hover animate-fadeIn">Read More <i class="fas fa-arrow-right ml-1"></i></a>
+          <button onclick="removeNews('${news.url}')" class="mt-4 bg-red-500 text-white font-semibold py-2 px-4 rounded-lg button-hover animate-pulseGlow">
+            Remove <i class="fas fa-trash-alt ml-1"></i>
+          </button>
+        `;
+        container.appendChild(card);
+      });
+    }
+
+    function removeNews(url) {
+      const updatedNews = savedNews.filter(news => news.url !== url);
+      localStorage.setItem("savedNews", JSON.stringify(updatedNews));
+      location.reload();
+    }
+
+    // Scroll-based animation trigger
+    const elements = document.querySelectorAll('.animate-slideUp, .animate-slideRight, .animate-fadeIn, .animate-bounceIn');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('opacity-100', 'translate-y-0', 'translate-x-0');
+          entry.target.classList.remove('opacity-0', 'translate-y-10', 'translate-x-10');
+        }
+      });
+    }, { threshold: 0.2 });
+
+    elements.forEach(el => {
+      el.classList.add('opacity-0');
+      if (el.classList.contains('animate-slideUp')) {
+        el.classList.add('translate-y-10');
+      } else if (el.classList.contains('animate-slideRight')) {
+        el.classList.add('translate-x-10');
+      }
+      el.classList.add('transition', 'duration-700');
+      observer.observe(el);
+    });
+
+    // Hover animation for buttons and links
+    const buttons = document.querySelectorAll('.button-hover, .link-hover');
+    buttons.forEach(btn => {
+      btn.addEventListener('mouseenter', () => {
+        btn.classList.add('animate-pulseGlow');
+      });
+      btn.addEventListener('mouseleave', () => {
+        btn.classList.remove('animate-pulseGlow');
+      });
+    });
+  </script>
+</body>
+</html>
